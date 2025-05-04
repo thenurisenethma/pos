@@ -108,6 +108,24 @@
                 background-color: greenyellow;
             }
 
+            .search{
+                background-color: cornflowerblue;
+            }
+            .save{
+                background-color: greenyellow;
+            }
+            .update{
+                background-color: lightgoldenrodyellow;
+            }
+            .delete{
+                background-color: palevioletred;
+            }
+            .clear{
+                background-color: darkgray;
+            }
+            .getAll{
+                background-color: cornflowerblue;
+            }
         </style>
     </head>
     <body>
@@ -252,6 +270,100 @@
             </div>
         </div>
     </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Item Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">QTY</th>
+            <th scope="col">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        </tbody>
+    </table>
+
+
+    <div class="headers">
+        <i class="fa-solid fa-cube" style="font-size: 3vh;"></i>
+        <h5 style="margin: 0;">Item</h5>
+    </div>
+
+    <div id="itemSec">
+        <div class="leftOrderSide" >
+            <div id="itemheader" class="subHeader card">
+                <h6>New Item </h6>
+            </div>
+
+            <div class="card-body" >
+                <div class="mb-3">
+                        <textarea class="form-control" rows="1" placeholder="Item Code"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <textarea class="form-control" rows="1" placeholder="Item Name"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <textarea class="form-control" rows="1" placeholder="Price"></textarea>
+                </div>
+
+                <div class="mb-3">
+                    <textarea class="form-control" rows="1" placeholder="QTY"></textarea>
+                </div>
+            </div>
+
+            <div id="searchItem" class="subHeader card">
+                <h6>Search</h6>
+            </div>
+
+            <div class="card-body">
+                <div class="mb-3">
+                    <textarea class="form-control" rows="1" placeholder="Item Name/Code"></textarea>
+                </div>
+                <button type="button" class="btn btn-light btn-sm search">Search</button>
+            </div>
+        </div>
+
+        <div class="rightOrderSide">
+            <div class="d-flex justify-content-end mb-2">
+                <button type="button" class="btn btn-light btn-sm save">Save</button>
+                <button type="button" class="btn btn-light btn-sm delete">Delete</button>
+                <button type="button" class="btn btn-light btn-sm update">Update</button>
+                <button type="button" class="btn btn-light btn-sm clear">Clear</button>
+                <button type="button" class="btn btn-light btn-sm getAll">View All</button>
+
+            </div>
+
+
+    </div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Item Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">QTY</th>
+            <th scope="col">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row"></th>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        </tbody>
+    </table>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

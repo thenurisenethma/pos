@@ -69,3 +69,20 @@ $("#customer-tbody").on('click', 'tr', function(){
     $("#salary").val(salary);
 
 });
+
+$('#customer_delete').on('click', function () {
+    const customerId = $(this).data('id');
+
+    if (!confirm(`Are you sure you want to delete customer ${customerId}?`)) {
+        return;
+    }
+
+    const deleted = CustomerModel.deleteCustomer(customerId);
+
+    if (deleted) {
+        $(this).closest('tr').remove();
+        alert("Customer deleted successfully!");
+    } else {
+        alert("Customer deletion failed. Please try again.");
+    }
+});

@@ -1,17 +1,38 @@
-export class OrderController {
-    constructor(custName,address,contact,creditLimit,date,orderId,itemCode, itemName, price, qty, total,orderQty,creditLimit) {
-        this.custName = custName;
-        this.address = address;
-        this.contact = contact;
-        this.creditLimit = creditLimit;
-        this.date = date;
-        this.orderId = orderId;
-        this.itemCode = itemCode;
-        this.itemName = itemName;
-        this.price = price;
-        this.qty = qty;
-        this.total = total;
-        this.orderQty = orderQty;
-        this.creditLimit = creditLimit;
+import {customers_db, items_db,orders_db} from '../db/DB.js';
+
+import ItemModel from "../model/ItemModel.js";
+import {OrderModel} from "../model/OrderModel";
+
+
+
+$('#plcOrdr').on('click', function () {
+    let date = $('#date').val();
+    let orderId = $('#orderId').val();
+    let itemCode = $('#orderItemCode').val();
+    let price = $('#orderPrice').val();
+    let qty = $('#orderQty').val();
+
+    if (date === '' || orderId === '' || itemCode === '' || price === '' || qty === '') {
+
+        Swal.fire({
+            title: 'Error!',
+            text: 'Invalid Inputs',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        })
+    } else {
+        let order_data = new OrderModel(date,orderId,itemCode, price, qty);
+
+        orders_db.push(order_data);
+
+        console.log(orders_db);
+
+        loadOrders();
+
+        Swal.fire({
+            title: "Added Successfully!",
+            icon: "success",
+            draggable: true
+        });
     }
-}
+});

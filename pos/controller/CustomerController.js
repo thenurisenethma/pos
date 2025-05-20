@@ -51,3 +51,21 @@ function loadCustomers() {
             });
         }
     });
+
+$("#customer-tbody").on('click', 'tr', function(){
+    let idx = $(this).index();
+    console.log(idx);
+    let obj = customers_db[idx];
+    console.log(obj);
+
+    let custId = obj.custId;
+    let name = obj.name;
+    let address = obj.address;
+    let salary = obj.salary;
+
+    $("#custId").val(custId);
+    $("#custName").val(name);
+    $("#address").val(address);
+    $("#salary").val(salary);
+
+});

@@ -1,7 +1,6 @@
 import {customers_db, items_db,orders_db} from '../db/DB.js';
 
-import ItemModel from "../model/ItemModel.js";
-import {OrderModel} from "../model/OrderModel";
+import {OrderModel} from "../model/OrderModel.js";
 
 function loadOrders() {
     $('#item-tbody').empty();

@@ -6,3 +6,12 @@ export default class CustomerModel {
         this.salary = salary;
     }
 
+    deleteCustomer(id, customers) {
+        const index = customers.findIndex(c => c.custId === id);
+        if (index !== -1) {
+            customers.splice(index, 1);
+            return true;
+        }
+        return false;
+    }
+}

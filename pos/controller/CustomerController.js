@@ -1,6 +1,7 @@
-import {customers_db, items_db,orders_db} from '../db/DB.js';
-
+import {customers_db, items_db, orders_db} from '../db/DB.js';
 import CustomerModel from "../model/CustomerModel.js";
+
+let selectedCustomerId = null;
 
 function loadCustomers() {
     $('#customer-tbody').empty();
@@ -11,78 +12,71 @@ function loadCustomers() {
         let salary = item.salary;
 
         let data = `<tr>
-                            <td>${index + 1}</td>
-                            <td>${custId}</td>
-                            <td>${name}</td>
-                            <td>${address}</td>
-                            <td>${salary}</td>
-                        </tr>`
+                        <td>${index + 1}</td>
+                        <td>${custId}</td>
+                        <td>${name}</td>
+                        <td>${address}</td>
+                        <td>${salary}</td>
+                    </tr>`;
         $('#customer-tbody').append(data);
-    })
+    });
 }
 
-    $('#customer_save').on('click', function () {
-        let custId = $('#custId').val();
-        let name = $('#custName').val();
-        let address = $('#address').val();
-        let salary = $('#salary').val();
+$('#customer_save').on('click', function () {
+    let custId = $('#custId').val();
+    let name = $('#custName').val();
+    let address = $('#address').val();
+    let salary = $('#salary').val();
 
-        if (custId === '' || name === '' || address === '' || salary === '') {
+    if (custId === '' || name === '' || address === '' || salary === '') {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Invalid Inputs',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        });
+    } else {
+        let customer_data = new CustomerModel(custId, name, address, salary);
+        customers_db.push(customer_data);
 
-            Swal.fire({
-                title: 'Error!',
-                text: 'Invalid Inputs',
-                icon: 'error',
-                confirmButtonText: 'Ok'
-            })
-        } else {
-            let customer_data = new CustomerModel(custId, name, address, salary);
+        loadCustomers();
 
-            customers_db.push(customer_data);
+        Swal.fire({
+            title: "Added Successfully!",
+            icon: "success",
+            draggable: true
+        });
+    }
+});
 
-            console.log(customers_db);
+$("#customer-tbody").on('click', 'tr', function () {
+    let custId = $(this).find('td:eq(1)').text();
+    selectedCustomerId = custId;
 
-            loadCustomers();
+    let obj = customers_db.find(c => c.custId === custId);
 
-            Swal.fire({
-                title: "Added Successfully!",
-                icon: "success",
-                draggable: true
-            });
-        }
-    });
-
-$("#customer-tbody").on('click', 'tr', function(){
-    let idx = $(this).index();
-    console.log(idx);
-    let obj = customers_db[idx];
-    console.log(obj);
-
-    let custId = obj.custId;
-    let name = obj.name;
-    let address = obj.address;
-    let salary = obj.salary;
-
-    $("#custId").val(custId);
-    $("#custName").val(name);
-    $("#address").val(address);
-    $("#salary").val(salary);
-
+    if (obj) {
+        $("#custId").val(obj.custId);
+        $("#custName").val(obj.name);
+        $("#address").val(obj.address);
+        $("#salary").val(obj.salary);
+    }
 });
 
 $('#customer_delete').on('click', function () {
-    const customerId = $(this).data('id');
-
-    if (!confirm(`Are you sure you want to delete customer ${customerId}?`)) {
+    if (!selectedCustomerId) {
+        Swal.fire("Please select a customer from the table.");
         return;
     }
 
-    const deleted = CustomerModel.deleteCustomer(customerId);
+    const model = new CustomerModel();
+    const deleted = model.deleteCustomer(selectedCustomerId, customers_db);
 
     if (deleted) {
-        $(this).closest('tr').remove();
-        alert("Customer deleted successfully!");
+        Swal.fire("Deleted Successfully!", "", "success");
+        selectedCustomerId = null;
+        loadCustomers();
     } else {
-        alert("Customer deletion failed. Please try again.");
+        Swal.fire("Delete failed.", "", "error");
     }
 });

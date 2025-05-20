@@ -5,4 +5,4 @@ export default class CustomerModel {
         this.address = address;
         this.salary = salary;
     }
-}
+

@@ -3,6 +3,27 @@ import {customers_db, items_db,orders_db} from '../db/DB.js';
 import ItemModel from "../model/ItemModel.js";
 import {OrderModel} from "../model/OrderModel";
 
+function loadOrders() {
+    $('#item-tbody').empty();
+    orders_db.map((item, index) => {
+        let date = item.date;
+        let orderId = item.orderId;
+        let itemCode = item.itemCode;
+        let price = item.price;
+        let qty = item.qty;
+
+        let data = `<tr>
+                            <td>${index + 1}</td>
+                            <td>${date}</td>
+                            <td>${orderId}</td>
+                            <td>${itemCode}</td>
+                            <td>${price}</td>
+                            <td>${qty}</td>
+                        </tr>`
+        $('#order-tbody').append(data);
+    })
+}
+
 $('#plcOrdr').on('click', function () {
     let date = $('#date').val();
     let orderId = $('#orderId').val();

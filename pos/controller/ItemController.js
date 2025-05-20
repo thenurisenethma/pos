@@ -34,3 +34,20 @@ $('#item_save').on('click', function () {
     }
 });
 
+$("#item-tbody").on('click', 'tr', function(){
+    let idx = $(this).index();
+    console.log(idx);
+    let obj = items_db[idx];
+    console.log(obj);
+
+    let itemCode = obj.itemCode;
+    let itemName = obj.itemName;
+    let price = obj.price;
+    let qty = obj.qty;
+
+    $("#itemCode").val(itemCode);
+    $("#itemName").val(itemName);
+    $("#price").val(price);
+    $("#qty").val(qty);
+
+});

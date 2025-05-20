@@ -108,25 +108,38 @@
 
             #nwCust, #plcOrdr {
                 background-color: greenyellow;
+                width: 25vw;
             }
 
             .search{
                 background-color: cornflowerblue;
+                width: 10vw;
+
             }
             .save{
                 background-color: greenyellow;
+                width: 7vw;
+
             }
             .update{
                 background-color: lightgoldenrodyellow;
+                width: 7vw;
+
             }
             .delete{
                 background-color: palevioletred;
+                width: 7vw;
+
             }
             .clear{
                 background-color: darkgray;
+                width: 7vw;
+
             }
             .getAll{
                 background-color: cornflowerblue;
+                width: 7vw;
+
             }
 
 
@@ -205,6 +218,7 @@
 
     <div id="orderSec">
 
+        <div class="leftOrderSide" >
 
             <div id="invoiceDetail" class="subHeader card">
                 <h6>Invoice Detail</h6>
@@ -219,33 +233,33 @@
                     <textarea class="form-control" rows="1" placeholder="Order ID"></textarea>
                 </div>
             </div>
+
+        <div id="ItemSelect" class="subHeader card">
+            <h6>Item Select</h6>
         </div>
 
-        <div class="rightOrderSide">
-            <div id="ItemSelect" class="subHeader card">
-                <h6>Item Select</h6>
+        <div class="card-body">
+            <div class="mb-3">
+                <textarea class="form-control" rows="1" placeholder="Item"></textarea>
             </div>
 
-            <div class="card-body">
-                <div class="mb-3">
-                    <textarea class="form-control" rows="1" placeholder="Item"></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <textarea class="form-control" rows="1" placeholder="Price"></textarea>
-                </div>
-
-                <div class="mb-3">
-                    <textarea class="form-control" rows="1" placeholder="QTY"></textarea>
-                </div>
+            <div class="mb-3">
+                <textarea class="form-control" rows="1" placeholder="Price"></textarea>
             </div>
 
-                <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-light btn-sm" id="plcOrdr">Place Order</button>
-                </div>
+            <div class="mb-3">
+                <textarea class="form-control" rows="1" placeholder="QTY"></textarea>
             </div>
+        </div>
         </div>
     </div>
+        <div class="rightOrderSide">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-light btn-sm" id="plcOrdr">Place Order</button>
+            </div>
+        </div>
+    <br>
+
     <table class="table">
         <thead>
         <tr>
@@ -265,7 +279,7 @@
 
         </tbody>
     </table>
-
+    <br>
 
     <div class="headers" id="itemHeaderMain">
         <i class="fa-solid fa-cube" style="font-size: 3vh;"></i>
@@ -307,7 +321,7 @@
                 <button type="button" class="btn btn-light btn-sm search">Search</button>
             </div>
         </div>
-
+<br>
         <div class="rightOrderSide">
             <div class="d-flex justify-content-end mb-2">
                 <button type="button" class="btn btn-light btn-sm save" id="item_save">Save</button>
@@ -321,6 +335,8 @@
 
     </div>
     </div>
+    <br>
+    <br>
     <table class="table">
         <thead>
         <tr>
@@ -340,6 +356,7 @@
 
         </tbody>
     </table>
+    <br>
 
     <div class="headers" id="customerHeaderMain">
         <i class="fa-solid fa-cube" style="font-size: 3vh;"></i>
@@ -380,6 +397,7 @@
                 <button type="button" class="btn btn-light btn-sm search">Search</button>
             </div>
         </div>
+        <br>
 
         <div class="rightOrderSide">
             <div class="d-flex justify-content-end mb-2">
@@ -394,6 +412,9 @@
 
         </div>
     </div>
+    <br>
+    <br>
+
     <table class="table">
         <thead>
         <tr>
@@ -413,7 +434,9 @@
 
         </tbody>
     </table>
-<!--    <script>-->
+    <br>
+
+    <!--    <script>-->
 <!--        $("#customerSec").css("display", "none");-->
 
 <!--        $("#orderHeader").on('click', function () {-->

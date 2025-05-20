@@ -2,6 +2,24 @@ import {customers_db, items_db,orders_db} from '../db/DB.js';
 
 import ItemModel from "../model/ItemModel.js";
 
+function loadItems() {
+    $('#item-tbody').empty();
+    items_db.map((item, index) => {
+        let itemCode = item.itemCode;
+        let itemName = item.itemName;
+        let price = item.price;
+        let qty = item.qty;
+
+        let data = `<tr>
+                            <td>${index + 1}</td>
+                            <td>${itemCode}</td>
+                            <td>${itemName}</td>
+                            <td>${price}</td>
+                            <td>${qty}</td>
+                        </tr>`
+        $('#item-tbody').append(data);
+    })
+}
 
 $('#item_save').on('click', function () {
     let itemCode = $('#itemCode').val();

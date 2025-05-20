@@ -3,8 +3,6 @@ import {customers_db, items_db,orders_db} from '../db/DB.js';
 import ItemModel from "../model/ItemModel.js";
 import {OrderModel} from "../model/OrderModel";
 
-
-
 $('#plcOrdr').on('click', function () {
     let date = $('#date').val();
     let orderId = $('#orderId').val();
@@ -35,4 +33,22 @@ $('#plcOrdr').on('click', function () {
             draggable: true
         });
     }
+});
+
+$("#order-tbody").on('click', 'tr', function(){
+    let idx = $(this).index();
+    console.log(idx);
+    let obj = orders_db[idx];
+    console.log(obj);
+    let date = obj.date;
+    let orderId = obj.orderId;
+    let itemCode = obj.itemCode;
+    let price = obj.price;
+    let qty = obj.qty;
+    $("#date").val(date);
+    $("#orderId").val(orderId);
+    $("#orderItemCode").val(itemCode);
+    $("#orderPrice").val(price);
+    $("#orderQty").val(qty);
+
 });

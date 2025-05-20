@@ -10,6 +10,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="module" src="controller/CustomerController.js"></script>
+    <script type="module" src="controller/ItemController.js"></script>
+
     <style>
             .bkcolor {
                 background-color: cornflowerblue;
@@ -291,7 +293,7 @@
             <th scope="col">Total</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="order-tbody">
         <tr>
             <th scope="row"></th>
             <td></td>
@@ -316,19 +318,19 @@
 
             <div class="card-body" >
                 <div class="mb-3">
-                        <textarea class="form-control" rows="1" placeholder="Item Code"></textarea>
+                        <textarea class="form-control" rows="1" placeholder="Item Code" id="itemCode"></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control" rows="1" placeholder="Item Name"></textarea>
+                    <textarea class="form-control" rows="1" placeholder="Item Name" id="itemName"></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control" rows="1" placeholder="Price"></textarea>
+                    <textarea class="form-control" rows="1" placeholder="Price" id="price"></textarea>
                 </div>
 
                 <div class="mb-3">
-                    <textarea class="form-control" rows="1" placeholder="QTY"></textarea>
+                    <textarea class="form-control" rows="1" placeholder="QTY" id="qty"></textarea>
                 </div>
             </div>
 
@@ -346,11 +348,11 @@
 
         <div class="rightOrderSide">
             <div class="d-flex justify-content-end mb-2">
-                <button type="button" class="btn btn-light btn-sm save">Save</button>
-                <button type="button" class="btn btn-light btn-sm delete">Delete</button>
-                <button type="button" class="btn btn-light btn-sm update">Update</button>
-                <button type="button" class="btn btn-light btn-sm clear">Clear</button>
-                <button type="button" class="btn btn-light btn-sm getAll">View All</button>
+                <button type="button" class="btn btn-light btn-sm save" id="item_save">Save</button>
+                <button type="button" class="btn btn-light btn-sm delete" id="item_delete">Delete</button>
+                <button type="button" class="btn btn-light btn-sm update" id="item_update">Update</button>
+                <button type="button" class="btn btn-light btn-sm clear" id="item_clear">Clear</button>
+                <button type="button" class="btn btn-light btn-sm getAll" id="item_view">View All</button>
 
             </div>
 
@@ -360,13 +362,13 @@
     <table class="table">
         <thead>
         <tr>
+            <th scope="col">Item Code</th>
             <th scope="col">Item Name</th>
             <th scope="col">Price</th>
             <th scope="col">QTY</th>
-            <th scope="col">Total</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="item-tbody">
         <tr>
             <th scope="row"></th>
             <td></td>
@@ -420,10 +422,10 @@
         <div class="rightOrderSide">
             <div class="d-flex justify-content-end mb-2">
                 <button type="button" class="btn btn-light btn-sm save" id="customer_save">Save</button>
-                <button type="button" class="btn btn-light btn-sm delete">Delete</button>
-                <button type="button" class="btn btn-light btn-sm update">Update</button>
-                <button type="button" class="btn btn-light btn-sm clear">Clear</button>
-                <button type="button" class="btn btn-light btn-sm getAll">View All</button>
+                <button type="button" class="btn btn-light btn-sm delete" id="customer_delete">Delete</button>
+                <button type="button" class="btn btn-light btn-sm update" id="customer_update">Update</button>
+                <button type="button" class="btn btn-light btn-sm clear" id="customer_clear">Clear</button>
+                <button type="button" class="btn btn-light btn-sm getAll" id="customer_view">View All</button>
 
             </div>
 

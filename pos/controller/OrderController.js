@@ -39,21 +39,29 @@ $('#plcOrdr').on('click', function () {
 
     if (date === "") {
         $("#date").css("border", "2px double red");
+        $("#date").css("background","  #fff2f2");
     }
     if ( itemCode === "" ) {
         $("#orderItemCode").css("border", "2px double red");
+        $("#orderItemCode").css("background","  #fff2f2");
     }
     if (price === "") {
         $("#orderPrice").css("border", "2px double red");
+        $("#orderPrice").css("background","  #fff2f2");
     }
     if (qty === "") {
         $("#orderQty").css("border", "2px double red");
+        $("#orderQty").css("background","  #fff2f2");
     }
     if (qtyOnHand === "") {
         $("#qtyOnHand").css("border", "2px double red");
+        $("#qtyOnHand").css("background","  #fff2f2");
+
     }
     if (orderId === "") {
         $("#orderId").css("border", "2px double red");
+        $("#orderId").css("background","  #fff2f2");
+
     }
     if (!date || !itemCode || !price || !qty || isNaN(qtyInt) || isNaN(stockInt)) {
         Swal.fire({

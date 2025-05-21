@@ -38,16 +38,22 @@ $('#plcOrdr').on('click', function () {
     let stockInt = parseInt(qtyOnHand);
 
     if (date === "") {
-        $("#date").css("border", "2px solid red");
+        $("#date").css("border", "2px double red");
     }
     if ( itemCode === "" ) {
-        $("#date").css("border", "2px solid red");
+        $("#orderItemCode").css("border", "2px double red");
     }
     if (price === "") {
-        $("#date").css("border", "2px solid red");
+        $("#orderPrice").css("border", "2px double red");
     }
     if (qty === "") {
-        $("#date").css("border", "2px solid red");
+        $("#orderQty").css("border", "2px double red");
+    }
+    if (qtyOnHand === "") {
+        $("#qtyOnHand").css("border", "2px double red");
+    }
+    if (orderId === "") {
+        $("#orderId").css("border", "2px double red");
     }
     if (!date || !itemCode || !price || !qty || isNaN(qtyInt) || isNaN(stockInt)) {
         Swal.fire({

@@ -1,6 +1,7 @@
 import {customers_db, items_db,orders_db} from '../db/DB.js';
 
 import ItemModel from "../model/ItemModel.js";
+let selectedItemCode = null;
 
 function loadItems() {
     $('#item-tbody').empty();
@@ -52,7 +53,7 @@ $('#item_save').on('click', function () {
     }
 });
 
-$("#item-tbody").on('click', 'tr', function(){
+$("#item-tbody").on('click', 'tr', function() {
     let idx = $(this).index();
     console.log(idx);
     let obj = items_db[idx];
@@ -67,5 +68,25 @@ $("#item-tbody").on('click', 'tr', function(){
     $("#itemName").val(itemName);
     $("#price").val(price);
     $("#qty").val(qty);
+
+    selectedItemCode = itemCode;
+});
+
+$('#item_delete').on('click', function () {
+        if (!selectedItemCode) {
+            Swal.fire("Please select a item from the table.");
+            return;
+        }
+
+        const model = new ItemModel();
+        const deleted = model.deleteItem(selectedItemCode, items_db);
+
+        if (deleted) {
+            Swal.fire("Deleted Successfully!", "", "success");
+            selectedItemCode = null;
+            loadItems();
+        } else {
+            Swal.fire("Delete failed.", "", "error");
+        }
 
 });

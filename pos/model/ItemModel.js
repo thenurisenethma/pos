@@ -5,4 +5,5 @@ export default class ItemModel {
         this.price = price;
         this.qty = qty;
     }
+
 }

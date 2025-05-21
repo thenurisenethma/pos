@@ -81,6 +81,3 @@ function clearFields() {
     $('#orderPrice').val('');
     $('#orderQty').val('');
 }
-$("#customer_update").on('click','tr',function () {
-
-});

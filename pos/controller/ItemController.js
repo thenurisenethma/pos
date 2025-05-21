@@ -1,6 +1,7 @@
 import {customers_db, items_db,orders_db} from '../db/DB.js';
 
 import ItemModel from "../model/ItemModel.js";
+import CustomerModel from "../model/CustomerModel";
 let selectedItemCode = null;
 
 function loadItems() {
@@ -96,9 +97,3 @@ $('#item_clear').on('click', function () {
     clear();
 });
 
-function clear() {
-    $('#itemCode').val('');
-    $('#itemName').val('');
-    $('#price').val('');
-    $('#qty').val('');
-}

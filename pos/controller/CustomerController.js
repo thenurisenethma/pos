@@ -93,4 +93,37 @@ function clear() {
     $('#address').val('');
     $('#salary').val('');
 }
+$('#customer_update').on('click', function () {
+    if (!selectedCustomerId) {
+        Swal.fire("Please select a customer to update.");
+        return;
+    }
+
+    const name = $('#custName').val();
+    const address = $('#address').val();
+    const salary = $('#salary').val();
+
+    if (name === '' || address === '' || salary === '') {
+        Swal.fire("All fields are required for update.", "", "warning");
+        return;
+    }
+
+    const updatedCustomer = {
+        name: name,
+        address: address,
+        salary: salary
+    };
+
+    const model = new CustomerModel();
+    const updated = model.updateCustomer(selectedCustomerId, updatedCustomer, customers_db);
+
+    if (updated) {
+        Swal.fire("Customer updated successfully!", "", "success");
+        loadCustomers();
+        clear();
+        selectedCustomerId = null;
+    } else {
+        Swal.fire("Update failed.", "", "error");
+    }
+});
 

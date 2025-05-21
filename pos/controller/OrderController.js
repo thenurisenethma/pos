@@ -3,7 +3,7 @@ import {customers_db, items_db,orders_db} from '../db/DB.js';
 import {OrderModel} from "../model/OrderModel.js";
 
 function loadOrders() {
-    $('#order-tbody').empty(); // corrected ID: should be #order-tbody
+    $('#order-tbody').empty();
     orders_db.map((item, index) => {
         let date = item.date;
         let orderId = index + 1;
@@ -11,7 +11,7 @@ function loadOrders() {
         let price = parseFloat(item.price);
         let qty = parseInt(item.qty);
 
-        let total = (price * qty).toFixed(2); // total with 2 decimal places
+        let total = (price * qty).toFixed(2);
 
         let data = `<tr>
                         <td>${orderId}</td>
@@ -46,7 +46,9 @@ $('#plcOrdr').on('click', function () {
         });
         return;
     }
-
+    if (date === ""|| itemCode === "" || price === ""|| qty === "") {
+        $("#address").css("border", "2px solid red");
+    }
     if (qtyInt > stockInt) {
         Swal.fire({
             title: 'Error!',
@@ -71,14 +73,13 @@ $('#plcOrdr').on('click', function () {
 });
 $("#order-tbody").on('click', 'tr', function(){
     let idx = $(this).index();
-    console.log(idx);
     let obj = orders_db[idx];
-    console.log(obj);
     let date = obj.date;
     let orderId = obj.orderId;
     let itemCode = obj.itemCode;
     let price = obj.price;
     let qty = obj.qty;
+
     $("#date").val(date);
     $("#orderId").val(orderId);
     $("#orderItemCode").val(itemCode);

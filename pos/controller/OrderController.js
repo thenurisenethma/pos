@@ -72,3 +72,10 @@ $("#order-tbody").on('click', 'tr', function(){
     $("#orderQty").val(qty);
 
 });
+function clearFields() {
+    $('#date').val('');
+    $('#orderId').val('');
+    $('#orderItemCode').val('');
+    $('#orderPrice').val('');
+    $('#orderQty').val('');
+}

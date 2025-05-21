@@ -52,6 +52,7 @@ $('#plcOrdr').on('click', function () {
             icon: "success",
             draggable: true
         });
+        clearFields();
     }
 });
 
@@ -72,6 +73,7 @@ $("#order-tbody").on('click', 'tr', function(){
     $("#orderQty").val(qty);
 
 });
+
 function clearFields() {
     $('#date').val('');
     $('#orderId').val('');
@@ -79,3 +81,6 @@ function clearFields() {
     $('#orderPrice').val('');
     $('#orderQty').val('');
 }
+$("#customer_update").on('click','tr',function () {
+
+});

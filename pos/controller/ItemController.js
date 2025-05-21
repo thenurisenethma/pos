@@ -92,7 +92,7 @@ $('#item_delete').on('click', function () {
     clear();
 });
 
-$('#item_delete').on('click', function () {
+$('#item_clear').on('click', function () {
     clear();
 });
 

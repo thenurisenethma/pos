@@ -90,3 +90,9 @@ $('#item_delete').on('click', function () {
         }
 
 });
+function clear() {
+    $('#itemCode').val('');
+    $('#itemName').val('');
+    $('#price').val('');
+    $('#qty').val('');
+}

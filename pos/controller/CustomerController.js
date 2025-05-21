@@ -47,6 +47,8 @@ $('#customer_save').on('click', function () {
             draggable: true
         });
     }
+    clear();
+
 });
 
 $("#customer-tbody").on('click', 'tr', function () {
@@ -79,4 +81,12 @@ $('#customer_delete').on('click', function () {
     } else {
         Swal.fire("Delete failed.", "", "error");
     }
+    clear();
 });
+function clear() {
+    $('#custId').val('');
+    $('#custName').val('');
+    $('#address').val('');
+    $('#salary').val('');
+}
+

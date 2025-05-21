@@ -51,6 +51,7 @@ $('#item_save').on('click', function () {
             draggable: true
         });
     }
+    clear();
 });
 
 $("#item-tbody").on('click', 'tr', function() {
@@ -88,8 +89,13 @@ $('#item_delete').on('click', function () {
         } else {
             Swal.fire("Delete failed.", "", "error");
         }
-
+    clear();
 });
+
+$('#item_delete').on('click', function () {
+    clear();
+});
+
 function clear() {
     $('#itemCode').val('');
     $('#itemName').val('');

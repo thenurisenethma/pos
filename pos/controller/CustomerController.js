@@ -48,7 +48,6 @@ $('#customer_save').on('click', function () {
         });
     }
     clear();
-
 });
 
 $("#customer-tbody").on('click', 'tr', function () {
@@ -83,6 +82,11 @@ $('#customer_delete').on('click', function () {
     }
     clear();
 });
+
+$('#customer_clear').on('click', function () {
+    clear();
+});
+
 function clear() {
     $('#custId').val('');
     $('#custName').val('');

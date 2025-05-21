@@ -37,6 +37,18 @@ $('#plcOrdr').on('click', function () {
     let qtyInt = parseInt(qty);
     let stockInt = parseInt(qtyOnHand);
 
+    if (date === "") {
+        $("#date").css("border", "2px solid red");
+    }
+    if ( itemCode === "" ) {
+        $("#date").css("border", "2px solid red");
+    }
+    if (price === "") {
+        $("#date").css("border", "2px solid red");
+    }
+    if (qty === "") {
+        $("#date").css("border", "2px solid red");
+    }
     if (!date || !itemCode || !price || !qty || isNaN(qtyInt) || isNaN(stockInt)) {
         Swal.fire({
             title: 'Error!',
@@ -46,9 +58,7 @@ $('#plcOrdr').on('click', function () {
         });
         return;
     }
-    if (date === ""|| itemCode === "" || price === ""|| qty === "") {
-        $("#address").css("border", "2px solid red");
-    }
+
     if (qtyInt > stockInt) {
         Swal.fire({
             title: 'Error!',

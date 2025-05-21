@@ -26,7 +26,36 @@ $('#customer_save').on('click', function () {
     let address = $('#address').val();
     let salary = $('#salary').val();
 
-    if (custId === '' || name === '' || address === '' || salary === '') {
+    let isValid = true;
+    const salaryPattern = /^\d+(\.\d{1,2})?$/;
+
+    $("input").css("border", "");
+
+    if (name === "") {
+        $("#custName").css("border", "2px double red");
+        isValid = false;
+    }
+
+    if (address === "") {
+        $("#address").css("border", "2px double red");
+        isValid = false;
+    }
+
+    if (!salaryPattern.test(salary)) {
+        $("#salary").css("border", "2px double red");
+        isValid = false;
+    }
+
+    if (!isValid) {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Please correct the highlighted fields.',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        });
+        return;
+    }
+    if ( name === '' || address === '' || salary === '') {
         Swal.fire({
             title: 'Error!',
             text: 'Invalid Inputs',
@@ -126,39 +155,7 @@ $('#customer_update').on('click', function () {
 });
 
 $('#customer_save').on('click',function () {
-    let isValid = true;
-    const salaryPattern = /^\d+(\.\d{1,2})?$/;
 
-    const name = $("#custName").val().trim();
-    const address = $("#address").val().trim();
-    const salary = $("#salary").val().trim();
-
-    $("input").css("border", "");
-
-    if (name === "") {
-        $("#custName").css("border", "2px double red");
-        isValid = false;
-    }
-
-    if (address === "") {
-        $("#address").css("border", "2px double red");
-        isValid = false;
-    }
-
-    if (!salaryPattern.test(salary)) {
-        $("#salary").css("border", "2px double red");
-        isValid = false;
-    }
-
-    if (!isValid) {
-        Swal.fire({
-            title: 'Error!',
-            text: 'Please correct the highlighted fields.',
-            icon: 'error',
-            confirmButtonText: 'Ok'
-        });
-        return;
-    }
 
 });
 

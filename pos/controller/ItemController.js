@@ -97,3 +97,43 @@ $('#item_clear').on('click', function () {
     clear();
 });
 
+function clear() {
+    $('#itemCode').val('');
+    $('#itemName').val('');
+    $('#price').val('');
+    $('#qty').val('');
+}
+('#item_update').on('click', function () {
+    if (!selectedItemCode) {
+        Swal.fire("Please select a item to update.");
+        return;
+    }
+
+    const itemName = $('#itemName').val();
+    const price = $('#price').val();
+    const qty = $('#qty').val();
+
+    if (itemName === '' || price === '' || qty === '') {
+        Swal.fire("Fill all fields to update.", "", "warning");
+        return;
+    }
+
+    const updatedItem = {
+        itemName: itemName,
+        price: price,
+        qty: qty
+    };
+
+    const model = new ItemModel();
+    const updated = model.updateItem(selectedItemCode, updatedItem, items_db);
+
+    if (updated) {
+        Swal.fire("updated successfully!", "", "success");
+        loadItems();
+        clear();
+        selectedItemCode = null;
+    } else {
+        Swal.fire("Update failed.", "", "error");
+    }
+});
+

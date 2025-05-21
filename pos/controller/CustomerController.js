@@ -6,14 +6,12 @@ let selectedCustomerId = null;
 function loadCustomers() {
     $('#customer-tbody').empty();
     customers_db.map((item, index) => {
-        let custId = item.custId;
         let name = item.name;
         let address = item.address;
         let salary = item.salary;
 
         let data = `<tr>
                         <td>${index + 1}</td>
-                        <td>${custId}</td>
                         <td>${name}</td>
                         <td>${address}</td>
                         <td>${salary}</td>
@@ -126,4 +124,42 @@ $('#customer_update').on('click', function () {
         Swal.fire("Update failed.", "", "error");
     }
 });
+
+$('#customer_save').on('click',function () {
+    let isValid = true;
+    const salaryPattern = /^\d+(\.\d{1,2})?$/;
+
+    const name = $("#custName").val().trim();
+    const address = $("#address").val().trim();
+    const salary = $("#salary").val().trim();
+
+    $("input").css("border", "");
+
+    if (name === "") {
+        $("#custName").css("border", "2px double red");
+        isValid = false;
+    }
+
+    if (address === "") {
+        $("#address").css("border", "2px double red");
+        isValid = false;
+    }
+
+    if (!salaryPattern.test(salary)) {
+        $("#salary").css("border", "2px double red");
+        isValid = false;
+    }
+
+    if (!isValid) {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Please correct the highlighted fields.',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        });
+        return;
+    }
+
+});
+
 

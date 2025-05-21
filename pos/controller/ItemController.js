@@ -1,7 +1,6 @@
 import {customers_db, items_db,orders_db} from '../db/DB.js';
 
 import ItemModel from "../model/ItemModel.js";
-import CustomerModel from "../model/CustomerModel";
 let selectedItemCode = null;
 
 function loadItems() {
@@ -103,7 +102,7 @@ function clear() {
     $('#price').val('');
     $('#qty').val('');
 }
-('#item_update').on('click', function () {
+$('#item_update').on('click', function () {
     if (!selectedItemCode) {
         Swal.fire("Please select a item to update.");
         return;
@@ -136,4 +135,5 @@ function clear() {
         Swal.fire("Update failed.", "", "error");
     }
 });
+
 

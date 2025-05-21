@@ -13,4 +13,14 @@ export default class ItemModel {
         }
         return false;
     }
+    updateItem(id, updatedData, items) {
+        const index = items.findIndex(c => c.itemCode === id);
+        if (index !== -1) {
+            items[index].itemName = updatedData.itemName;
+            items[index].price = updatedData.price;
+            items[index].qty = updatedData.qty;
+            return true;
+        }
+        return false;
+    }
 }

@@ -3,25 +3,28 @@ import {customers_db, items_db,orders_db} from '../db/DB.js';
 import {OrderModel} from "../model/OrderModel.js";
 
 function loadOrders() {
-    $('#item-tbody').empty();
+    $('#order-tbody').empty(); // corrected ID: should be #order-tbody
     orders_db.map((item, index) => {
         let date = item.date;
-        let orderId = item.orderId;
+        let orderId = index + 1;
         let itemCode = item.itemCode;
-        let price = item.price;
-        let qty = item.qty;
+        let price = parseFloat(item.price);
+        let qty = parseInt(item.qty);
+
+        let total = (price * qty).toFixed(2); // total with 2 decimal places
 
         let data = `<tr>
-                            <td>${index + 1}</td>
-                            <td>${date}</td>
-                            <td>${orderId}</td>
-                            <td>${itemCode}</td>
-                            <td>${price}</td>
-                            <td>${qty}</td>
-                        </tr>`
+                        <td>${orderId}</td>
+                        <td>${date}</td>
+                        <td>${itemCode}</td>
+                        <td>${price}</td>
+                        <td>${qty}</td>
+                        <td>${total}</td>
+                    </tr>`;
         $('#order-tbody').append(data);
-    })
+    });
 }
+
 
 $('#plcOrdr').on('click', function () {
     let date = $('#date').val();
@@ -29,33 +32,43 @@ $('#plcOrdr').on('click', function () {
     let itemCode = $('#orderItemCode').val();
     let price = $('#orderPrice').val();
     let qty = $('#orderQty').val();
+    let qtyOnHand = $('#qtyOnHand').val();
+    let qtyLeft= qtyOnHand-qty;
+    let qtyInt = parseInt(qty);
+    let stockInt = parseInt(qtyOnHand);
 
-    if (date === '' || orderId === '' || itemCode === '' || price === '' || qty === '') {
-
+    if (!date || !itemCode || !price || !qty || isNaN(qtyInt) || isNaN(stockInt)) {
         Swal.fire({
             title: 'Error!',
-            text: 'Invalid Inputs',
+            text: 'Invalid or empty input fields.',
             icon: 'error',
             confirmButtonText: 'Ok'
-        })
-    } else {
-        let order_data = new OrderModel(date,orderId,itemCode, price, qty);
-
-        orders_db.push(order_data);
-
-        console.log(orders_db);
-
-        loadOrders();
-
-        Swal.fire({
-            title: "Added Successfully!",
-            icon: "success",
-            draggable: true
         });
-        clearFields();
+        return;
     }
-});
 
+    if (qtyInt > stockInt) {
+        Swal.fire({
+            title: 'Error!',
+            text: 'Not enough stock! Only '+stockInt+' left.',
+            icon: 'error',
+            confirmButtonText: 'Ok'
+        });
+        return;
+    }
+    let order_data = new OrderModel(date, orderId, itemCode, price, qtyInt);
+    orders_db.push(order_data);
+
+    loadOrders();
+
+    Swal.fire({
+        title: "Added Successfully!",
+        icon: "success",
+        draggable: true
+    });
+
+    clearFields();
+});
 $("#order-tbody").on('click', 'tr', function(){
     let idx = $(this).index();
     console.log(idx);

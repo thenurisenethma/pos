@@ -250,6 +250,9 @@
                 <div class="mb-3">
                     <textarea class="form-control" rows="1" placeholder="QTY" id="orderQty"></textarea>
                 </div>
+                <div class="mb-3">
+                    <textarea class="form-control" rows="1" placeholder="QTY On Hand" id="qtyOnHand"></textarea>
+                </div>
             </div>
         </div>
     </div>
@@ -263,10 +266,12 @@
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">Item Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">QTY</th>
-            <th scope="col">Total</th>
+            <th>Order ID</th>
+            <th>Date</th>
+            <th>Item Code</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Total</th>
         </tr>
         </thead>
         <tbody id="order-tbody">

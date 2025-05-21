@@ -13,7 +13,6 @@ function loadItems() {
 
         let data = `<tr>
                             <td>${index + 1}</td>
-                            <td>${itemCode}</td>
                             <td>${itemName}</td>
                             <td>${price}</td>
                             <td>${qty}</td>
@@ -23,34 +22,53 @@ function loadItems() {
 }
 
 $('#item_save').on('click', function () {
-    let itemCode = $('#itemCode').val();
-    let itemName = $('#itemName').val();
-    let price = $('#price').val();
-    let qty = $('#qty').val();
+    let itemCode = $('#itemCode').val().trim();
+    let itemName = $('#itemName').val().trim();
+    let price = $('#price').val().trim();
+    let qty = $('#qty').val().trim();
 
-    if (itemCode === '' || itemName === '' || price === '' || qty === '') {
+    let isValid = true;
+    const pricePattern = /^\d+(\.\d{1,2})?$/;
 
+    $("input").css("border", "");
+
+    if (itemName === "") {
+        $("#itemName").css("border", "2px double red");
+        isValid = false;
+    }
+
+    if (qty === "" ) {
+        $("#qty").css("border", "2px double red");
+        isValid = false;
+    }
+
+    if (!pricePattern.test(price)) {
+        $("#price").css("border", "2px double red");
+        isValid = false;
+    }
+
+    if (!isValid) {
         Swal.fire({
             title: 'Error!',
-            text: 'Invalid Inputs',
+            text: 'Please correct the highlighted fields.',
             icon: 'error',
             confirmButtonText: 'Ok'
-        })
-    } else {
-        let item_data = new ItemModel(itemCode, itemName, price, qty);
-
-        items_db.push(item_data);
-
-        console.log(items_db);
-
-        loadItems();
-
-        Swal.fire({
-            title: "Added Successfully!",
-            icon: "success",
-            draggable: true
         });
+        return;
     }
+
+    let item_data = new ItemModel(itemCode, itemName, price, qty);
+    items_db.push(item_data);
+
+    console.log(items_db);
+    loadItems();
+
+    Swal.fire({
+        title: "Added Successfully!",
+        icon: "success",
+        confirmButtonText: "Ok"
+    });
+
     clear();
 });
 

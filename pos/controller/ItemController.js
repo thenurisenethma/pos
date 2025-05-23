@@ -103,16 +103,17 @@ $('#item_delete').on('click', function () {
         if (deleted) {
             Swal.fire("Deleted Successfully!", "", "success");
             selectedItemCode = null;
+            $("#itemCode, #itemName, #price, #qty").on('input change', function () {
+                $(this).css({
+                    "border": "",
+                    "background": ""
+                });
+            });
+
             loadItems();
         } else {
             Swal.fire("Delete failed.", "", "error");
         }
-    $("#itemCode, #itemName,#price, #qty").on('input change', function () {
-        $(this).css({
-            "border": "",
-            "background": ""
-        });
-    });
     clear();
 });
 
@@ -125,6 +126,11 @@ function clear() {
     $('#itemName').val('');
     $('#price').val('');
     $('#qty').val('');
+
+    $("#itemCode, #itemName, #price, #qty").css({
+        "border": "",
+        "background": ""
+    });
 }
 $('#item_update').on('click', function () {
     if (!selectedItemCode) {

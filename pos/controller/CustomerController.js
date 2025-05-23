@@ -78,7 +78,7 @@ $('#customer_save').on('click', function () {
 });
 
 $("#customer-tbody").on('click', 'tr', function () {
-    let custId = $(this).find('td:eq(1)').text();
+    let custId = $(this).find('.cust-id').text();
     selectedCustomerId = custId;
 
     let obj = customers_db.find(c => c.custId === custId);
@@ -90,6 +90,7 @@ $("#customer-tbody").on('click', 'tr', function () {
         $("#salary").val(obj.salary);
     }
 });
+
 
 $('#customer_delete').on('click', function () {
     if (!selectedCustomerId) {

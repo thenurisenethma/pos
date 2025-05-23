@@ -77,7 +77,12 @@ $('#customer_save').on('click', function () {
             draggable: true
         });
     }
-
+    $("#custId, #custName,#address, #salary").on('input change', function () {
+        $(this).css({
+            "border": "",
+            "background": ""
+        });
+    });
     clear();
 });
 

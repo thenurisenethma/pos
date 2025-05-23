@@ -107,6 +107,7 @@ $('#item_delete').on('click', function () {
         } else {
             Swal.fire("Delete failed.", "", "error");
         }
+
     clear();
 });
 

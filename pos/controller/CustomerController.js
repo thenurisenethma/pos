@@ -9,13 +9,10 @@ function loadCustomers() {
         let name = item.name;
         let address = item.address;
         let salary = item.salary;
+        let custId = item.custId;
 
-        let data = `<tr>
-                        <td>${index + 1}</td>
-                        <td>${name}</td>
-                        <td>${address}</td>
-                        <td>${salary}</td>
-                    </tr>`;
+
+
         $('#customer-tbody').append(data);
     });
 }

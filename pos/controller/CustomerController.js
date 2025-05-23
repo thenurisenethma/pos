@@ -11,7 +11,13 @@ function loadCustomers() {
         let salary = item.salary;
         let custId = item.custId;
 
-
+        let data = `<tr>
+                <td>${index + 1}</td>
+                <td class="cust-id" style="display: none;">${custId}</td>
+                <td>${name}</td>
+                <td>${address}</td>
+                <td>${salary}</td>
+            </tr>`;
 
         $('#customer-tbody').append(data);
     });

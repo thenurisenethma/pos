@@ -123,4 +123,11 @@ function clearFields() {
     $('#orderItemCode').val('');
     $('#orderPrice').val('');
     $('#orderQty').val('');
+
+    $("#custName, #address, #salary, #date, #orderItemCode, #orderPrice, #orderQty, #qtyOnHand, #orderId").on('input change', function () {
+        $(this).css({
+            "border": "",
+            "background": ""
+        });
+    });
 }

@@ -107,7 +107,12 @@ $('#item_delete').on('click', function () {
         } else {
             Swal.fire("Delete failed.", "", "error");
         }
-
+    $("#itemCode, #itemName,#price, #qty").on('input change', function () {
+        $(this).css({
+            "border": "",
+            "background": ""
+        });
+    });
     clear();
 });
 

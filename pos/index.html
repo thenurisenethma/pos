@@ -187,20 +187,13 @@
         <div id="homeContainer">
             <img src="../assest/posHome.jpg" class="img-fluid" alt="homepage" id="homeImg">
             <div id="homeDiv">
+                <a href="#customerHeaderMain">
                 <div id="customerCard" class="card" style="width: 10rem;">
                     <div class="cardHeading"><h6>Customer</h6></div>
                     <div class="card-body"><i class="fa-solid fa-users"></i></div>
-                </div>
+                </div></a>
 
-                <div id="ItemCard" class="card" style="width: 10rem;">
-                    <div class="cardHeading"><h6>Item</h6></div>
-                    <div class="card-body"><i class="fa-solid fa-cube"></i></div>
-                </div>
 
-                <div id="OrderCard" class="card" style="width: 10rem;">
-                    <div class="cardHeading"><h6>Order</h6></div>
-                    <div class="card-body"><i class="fa-solid fa-cart-shopping"></i></div>
-                </div>
 
                 <div id="SettingsCard" class="card" style="width: 10rem;">
                     <div class="cardHeading"><h6>Settings</h6></div>
@@ -472,7 +465,12 @@
             $("#itemSPA").css("display", "none");
             $("#homeContainer").css("display", "none");
         })
-
+        $('a[href="#home"]').on('click', function () {
+            $("#customerSPA").css("display", "block");
+            $("#orderSPA").css("display", "block");
+            $("#itemSPA").css("display", "block");
+            $("#homeContainer").css("display", "block");
+        })
     </script>
 
     </body>

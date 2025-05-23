@@ -92,7 +92,12 @@ $('#plcOrdr').on('click', function () {
         icon: "success",
         draggable: true
     });
-
+    $("#custName, #address, #salary, #date, #orderItemCode, #orderPrice, #orderQty, #qtyOnHand, #orderId").on('input change', function () {
+        $(this).css({
+            "border": "",
+            "background": ""
+        });
+    });
     clearFields();
 });
 $("#order-tbody").on('click', 'tr', function(){

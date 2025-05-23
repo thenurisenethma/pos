@@ -77,6 +77,7 @@ $('#customer_save').on('click', function () {
             draggable: true
         });
     }
+
     clear();
 });
 
